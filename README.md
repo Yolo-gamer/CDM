@@ -1,4 +1,4 @@
-# cdm
+# CDM
 Csv data manager. 
 
 A simplified version of csv.
