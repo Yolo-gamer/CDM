@@ -18,7 +18,7 @@ def __tolist__(strs):
     newval=eval(vals[1])(vals[0])
   return newval
 """
-use cdm.new() or cdm.add()
+use cdm.new() or cdm.add() or cdm.read()
 new(data,file_name) 'creates a new file or overwrites exsisting files
 'data' is a list or array of variables
 'file_name' is the name of the file to be made or edited
