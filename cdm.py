@@ -105,10 +105,19 @@ read(file_name) 'reads a csv file and returns the data
 'file_name' is the name of the file to be made or edited
 Example:
 read("test")"""
-    readFile = open(str(file_name)+'.csv', 'r', newline='')
-    readr = list(_csv.reader(readFile))
     try:
-      ret=__tolist__(readr)
+      readFile = open(str(file_name)+'.csv', 'r', newline='')
     except:
-      ret=readr
-    return ret
+      try:
+        readFile = open(str(file_name), 'r', newline='')
+      except:
+        print(file_name + " not valid")
+    try:
+      readr = list(_csv.reader(readFile))
+      try:
+        ret=__tolist__(readr)
+      except:
+        ret=readr
+      return ret
+    except :
+      pass
