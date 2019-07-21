@@ -11,6 +11,10 @@ def __tostr__(lists,lvl=0):
       newlist=(str(lists),str(type(lists)).replace("<class '","").replace("'>",""))
   return newlist 
 def __tolist__(strs):
+  try:
+    strs=eval(strs)
+  except:
+    pass
   if type(strs) == list:
     newval = [__tolist__(n) for n in strs]
   else:
