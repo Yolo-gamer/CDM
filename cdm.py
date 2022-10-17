@@ -22,7 +22,7 @@ def __tolist__(strs):
     newval=eval(vals[1])(vals[0])
   return newval
 """
-use cdm.new() or cdm.add() or cdm.read()
+use cdm.new() or cdm.add()
 new(data,file_name) 'creates a new file or overwrites exsisting files
 'data' is a list or array of variables
 'file_name' is the name of the file to be made or edited
@@ -44,20 +44,29 @@ new(data,file_name) 'creates a new file or overwrites exsisting files
 'data' is a list or array of variables
 'file_name' is the name of the file to be made or edited
 
-new.prompt if True 'new()' will ask user if they want to overwrite 
-new.prompt is True by defult
+new.prompt if 'True' 'new()' will ask user if they want to overwrite 
+new.prompt is 'True' by defult
 
-new.overwrite if True overwrite an exsisting file without prompting user
-new.overwrite is False by defult
+new.overwrite if 'True' overwrite an exsisting file without prompting user
+new.overwrite is 'False' by defult
 
-new.normal if False data and type will be saved and whe data type will remain when read
-new.normal if True data will be saved and all data will be set to string
-new.normal is False by defult
+new.normal if 'False' data and type will be saved and whe data type will remain when read
+new.normal if 'True' data will be saved and all data will be set to string
+new.normal is 'False' by defult
 
 Example:
 data=[[1,2,3],[4,5,6]]
 new(data,"test")
 """
+    if type(data) != list:
+    	data=[data]
+    if data[0] != list:
+    	data=[data]
+    for n in range(len(data)):
+      try:
+        data[n][0]
+      except:
+        data[n]=[data[n]]
     try:
       if new.overwrite == True:
         crash
@@ -118,6 +127,9 @@ read("test")"""
         ret=__tolist__(readr)
       except:
         ret=readr
+      if len(ret) == 1:
+      	if type(ret[0]) == list:
+      		ret = [n for n in ret[0]]
       return ret
     except :
       pass
